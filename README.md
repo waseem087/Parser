@@ -150,6 +150,7 @@ Second -> b
 ```
 - Tests epsilon productions and FOLLOW-based table entries
 - Valid: `a b`, `b`
+<img width="1137" height="429" alt="image" src="https://github.com/user-attachments/assets/5a10fafe-fe21-4ff2-9c1a-b0722411a116" />
 
 ### Grammar 2 — Expression Grammar (Left Recursion)
 ```
