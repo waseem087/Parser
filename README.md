@@ -199,6 +199,7 @@ Alpha -> Alpha c | Start d | epsilon
 - Valid: `b`, `a`
 
 ---
+<img width="1283" height="611" alt="image" src="https://github.com/user-attachments/assets/614adfba-98ce-47d7-8f98-974810f1ce71" />
 
 ## Output Files
 
