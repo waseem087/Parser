@@ -140,6 +140,9 @@ another token string
 ## Sample Grammar and Input Files Explanation
 
 ### Grammar 1 — Simple Grammar
+
+<img width="1016" height="250" alt="image" src="https://github.com/user-attachments/assets/0d65310c-b0e0-4653-b702-ec28a67b2174" />
+
 ```
 Start -> First Second
 First -> a | epsilon
