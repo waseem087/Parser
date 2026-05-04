@@ -1,0 +1,245 @@
+=== Parse Tree for: id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   └── id
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        └── epsilon
+
+
+=== Parse Tree for: id + id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   └── id
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        ├── +
+        ├── Term
+        │   ├── Factor
+        │   │   └── id
+        │   └── TermPrime
+        │       └── epsilon
+        └── ExprPrime
+            └── epsilon
+
+
+=== Parse Tree for: id * id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   └── id
+    │   └── TermPrime
+    │       ├── *
+    │       ├── Factor
+    │       │   └── id
+    │       └── TermPrime
+    │           └── epsilon
+    └── ExprPrime
+        └── epsilon
+
+
+=== Parse Tree for: id + id * id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   └── id
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        ├── +
+        ├── Term
+        │   ├── Factor
+        │   │   └── id
+        │   └── TermPrime
+        │       ├── *
+        │       ├── Factor
+        │       │   └── id
+        │       └── TermPrime
+        │           └── epsilon
+        └── ExprPrime
+            └── epsilon
+
+
+=== Parse Tree for: ( id + id ) * id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   ├── (
+    │   │   ├── Expr
+    │   │   │   ├── Term
+    │   │   │   │   ├── Factor
+    │   │   │   │   │   └── id
+    │   │   │   │   └── TermPrime
+    │   │   │   │       └── epsilon
+    │   │   │   └── ExprPrime
+    │   │   │       ├── +
+    │   │   │       ├── Term
+    │   │   │       │   ├── Factor
+    │   │   │       │   │   └── id
+    │   │   │       │   └── TermPrime
+    │   │   │       │       └── epsilon
+    │   │   │       └── ExprPrime
+    │   │   │           └── epsilon
+    │   │   └── )
+    │   └── TermPrime
+    │       ├── *
+    │       ├── Factor
+    │       │   └── id
+    │       └── TermPrime
+    │           └── epsilon
+    └── ExprPrime
+        └── epsilon
+
+
+=== Parse Tree for: id * id + id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   └── id
+    │   └── TermPrime
+    │       ├── *
+    │       ├── Factor
+    │       │   └── id
+    │       └── TermPrime
+    │           └── epsilon
+    └── ExprPrime
+        ├── +
+        ├── Term
+        │   ├── Factor
+        │   │   └── id
+        │   └── TermPrime
+        │       └── epsilon
+        └── ExprPrime
+            └── epsilon
+
+
+=== Parse Tree for: ( id ) ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   ├── (
+    │   │   ├── Expr
+    │   │   │   ├── Term
+    │   │   │   │   ├── Factor
+    │   │   │   │   │   └── id
+    │   │   │   │   └── TermPrime
+    │   │   │   │       └── epsilon
+    │   │   │   └── ExprPrime
+    │   │   │       └── epsilon
+    │   │   └── )
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        └── epsilon
+
+
+=== Parse Tree for: ( id + id + id ) ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   ├── (
+    │   │   ├── Expr
+    │   │   │   ├── Term
+    │   │   │   │   ├── Factor
+    │   │   │   │   │   └── id
+    │   │   │   │   └── TermPrime
+    │   │   │   │       └── epsilon
+    │   │   │   └── ExprPrime
+    │   │   │       ├── +
+    │   │   │       ├── Term
+    │   │   │       │   ├── Factor
+    │   │   │       │   │   └── id
+    │   │   │       │   └── TermPrime
+    │   │   │       │       └── epsilon
+    │   │   │       └── ExprPrime
+    │   │   │           ├── +
+    │   │   │           ├── Term
+    │   │   │           │   ├── Factor
+    │   │   │           │   │   └── id
+    │   │   │           │   └── TermPrime
+    │   │   │           │       └── epsilon
+    │   │   │           └── ExprPrime
+    │   │   │               └── epsilon
+    │   │   └── )
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        └── epsilon
+
+
+=== Parse Tree for: id + id + id ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   └── id
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        ├── +
+        ├── Term
+        │   ├── Factor
+        │   │   └── id
+        │   └── TermPrime
+        │       └── epsilon
+        └── ExprPrime
+            ├── +
+            ├── Term
+            │   ├── Factor
+            │   │   └── id
+            │   └── TermPrime
+            │       └── epsilon
+            └── ExprPrime
+                └── epsilon
+
+
+=== Parse Tree for: ( id * id ) + ( id + id ) ===
+└── Expr
+    ├── Term
+    │   ├── Factor
+    │   │   ├── (
+    │   │   ├── Expr
+    │   │   │   ├── Term
+    │   │   │   │   ├── Factor
+    │   │   │   │   │   └── id
+    │   │   │   │   └── TermPrime
+    │   │   │   │       ├── *
+    │   │   │   │       ├── Factor
+    │   │   │   │       │   └── id
+    │   │   │   │       └── TermPrime
+    │   │   │   │           └── epsilon
+    │   │   │   └── ExprPrime
+    │   │   │       └── epsilon
+    │   │   └── )
+    │   └── TermPrime
+    │       └── epsilon
+    └── ExprPrime
+        ├── +
+        ├── Term
+        │   ├── Factor
+        │   │   ├── (
+        │   │   ├── Expr
+        │   │   │   ├── Term
+        │   │   │   │   ├── Factor
+        │   │   │   │   │   └── id
+        │   │   │   │   └── TermPrime
+        │   │   │   │       └── epsilon
+        │   │   │   └── ExprPrime
+        │   │   │       ├── +
+        │   │   │       ├── Term
+        │   │   │       │   ├── Factor
+        │   │   │       │   │   └── id
+        │   │   │       │   └── TermPrime
+        │   │   │       │       └── epsilon
+        │   │   │       └── ExprPrime
+        │   │   │           └── epsilon
+        │   │   └── )
+        │   └── TermPrime
+        │       └── epsilon
+        └── ExprPrime
+            └── epsilon
+
+

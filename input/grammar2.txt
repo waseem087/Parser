@@ -1,0 +1,4 @@
+# Grammar 2: Expression Grammar (has left recursion - will be transformed)
+Expr -> Expr + Term | Term
+Term -> Term * Factor | Factor
+Factor -> ( Expr ) | id

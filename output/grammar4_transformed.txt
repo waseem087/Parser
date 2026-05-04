@@ -1,0 +1,26 @@
+=== Transformed Grammar ===
+Start -> Alpha a | b
+Alpha -> b d AlphaPrime | AlphaPrime
+AlphaPrime -> c AlphaPrime | a d AlphaPrime | epsilon
+
+=== FIRST Sets ===
+FIRST(Start          ) = { b, c, a }
+FIRST(Alpha          ) = { b, c, a, epsilon }
+FIRST(AlphaPrime     ) = { c, a, epsilon }
+
+=== FOLLOW Sets ===
+FOLLOW(Start         ) = { $ }
+FOLLOW(Alpha         ) = { a }
+FOLLOW(AlphaPrime    ) = { a }
+
+=== LL(1) Parsing Table ===
+NT                   | $                    | a                    | b                    | c                    | d                   
+---------------------------------------------------------------------------------------------------------------------------------------
+Start                |                      | Start->Alpha a       | Start->Alpha a       | Start->Alpha a       |                     
+Alpha                |                      | Alpha->AlphaPrime    | Alpha->b d AlphaPri… | Alpha->AlphaPrime    |                     
+AlphaPrime           |                      | AlphaPrime->a d Alp… |                      | AlphaPrime->c Alpha… |                     
+
+Grammar is NOT LL(1)
+  CONFLICT at M[Start, b]: Start -> Alpha a  AND  Start -> b
+  CONFLICT at M[Alpha, a]: Alpha -> AlphaPrime  AND  Alpha -> AlphaPrime
+  CONFLICT at M[AlphaPrime, a]: AlphaPrime -> a d AlphaPrime  AND  AlphaPrime -> epsilon

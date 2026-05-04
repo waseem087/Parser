@@ -1,0 +1,27 @@
+=== Input 1: b ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Start                             | b $                            | Start -> Alpha a
+2     | $ a Alpha                           | b $                            | Alpha -> b d AlphaPrime
+3     | $ a AlphaPrime d b                  | b $                            | Match 'b'
+4     | $ a AlphaPrime d                    | $                              | ERROR: expected 'd', got '$'
+5     | $ a AlphaPrime                      | $                              | ERROR: no rule for [AlphaPrime, $]
+6     | $ a                                 | $                              | ERROR: expected 'a', got '$'
+7     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 2: a ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Start                             | a $                            | Start -> Alpha a
+2     | $ a Alpha                           | a $                            | Alpha -> AlphaPrime
+3     | $ a AlphaPrime                      | a $                            | AlphaPrime -> a d AlphaPrime
+4     | $ a AlphaPrime d a                  | a $                            | Match 'a'
+5     | $ a AlphaPrime d                    | $                              | ERROR: expected 'd', got '$'
+6     | $ a AlphaPrime                      | $                              | ERROR: no rule for [AlphaPrime, $]
+7     | $ a                                 | $                              | ERROR: expected 'a', got '$'
+8     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+

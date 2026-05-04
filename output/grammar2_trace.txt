@@ -1,0 +1,245 @@
+=== Input 1: id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | id $                           | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | id $                           | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+4     | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+5     | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+6     | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+7     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 2: id + id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | id + id $                      | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | id + id $                      | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | id + id $                      | Factor -> id
+4     | $ ExprPrime TermPrime id            | id + id $                      | Match 'id'
+5     | $ ExprPrime TermPrime               | + id $                         | TermPrime -> epsilon
+6     | $ ExprPrime                         | + id $                         | ExprPrime -> + Term ExprPrime
+7     | $ ExprPrime Term +                  | + id $                         | Match '+'
+8     | $ ExprPrime Term                    | id $                           | Term -> Factor TermPrime
+9     | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+10    | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+11    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+12    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+13    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 3: id * id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | id * id $                      | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | id * id $                      | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | id * id $                      | Factor -> id
+4     | $ ExprPrime TermPrime id            | id * id $                      | Match 'id'
+5     | $ ExprPrime TermPrime               | * id $                         | TermPrime -> * Factor TermPrime
+6     | $ ExprPrime TermPrime Factor *      | * id $                         | Match '*'
+7     | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+8     | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+9     | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+10    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+11    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 4: id + id * id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | id + id * id $                 | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | id + id * id $                 | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | id + id * id $                 | Factor -> id
+4     | $ ExprPrime TermPrime id            | id + id * id $                 | Match 'id'
+5     | $ ExprPrime TermPrime               | + id * id $                    | TermPrime -> epsilon
+6     | $ ExprPrime                         | + id * id $                    | ExprPrime -> + Term ExprPrime
+7     | $ ExprPrime Term +                  | + id * id $                    | Match '+'
+8     | $ ExprPrime Term                    | id * id $                      | Term -> Factor TermPrime
+9     | $ ExprPrime TermPrime Factor        | id * id $                      | Factor -> id
+10    | $ ExprPrime TermPrime id            | id * id $                      | Match 'id'
+11    | $ ExprPrime TermPrime               | * id $                         | TermPrime -> * Factor TermPrime
+12    | $ ExprPrime TermPrime Factor *      | * id $                         | Match '*'
+13    | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+14    | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+15    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+16    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+17    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 5: ( id + id ) * id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | ( id + id ) * id $             | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | ( id + id ) * id $             | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | ( id + id ) * id $             | Factor -> ( Expr )
+4     | $ ExprPrime TermPrime ) Expr (      | ( id + id ) * id $             | Match '('
+5     | $ ExprPrime TermPrime ) Expr        | id + id ) * id $               | Expr -> Term ExprPrime
+6     | $ ExprPrime TermPrime ) ExprPrime Term | id + id ) * id $               | Term -> Factor TermPrime
+7     | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id + id ) * id $               | Factor -> id
+8     | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id + id ) * id $               | Match 'id'
+9     | $ ExprPrime TermPrime ) ExprPrime TermPrime | + id ) * id $                  | TermPrime -> epsilon
+10    | $ ExprPrime TermPrime ) ExprPrime   | + id ) * id $                  | ExprPrime -> + Term ExprPrime
+11    | $ ExprPrime TermPrime ) ExprPrime Term + | + id ) * id $                  | Match '+'
+12    | $ ExprPrime TermPrime ) ExprPrime Term | id ) * id $                    | Term -> Factor TermPrime
+13    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id ) * id $                    | Factor -> id
+14    | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id ) * id $                    | Match 'id'
+15    | $ ExprPrime TermPrime ) ExprPrime TermPrime | ) * id $                       | TermPrime -> epsilon
+16    | $ ExprPrime TermPrime ) ExprPrime   | ) * id $                       | ExprPrime -> epsilon
+17    | $ ExprPrime TermPrime )             | ) * id $                       | Match ')'
+18    | $ ExprPrime TermPrime               | * id $                         | TermPrime -> * Factor TermPrime
+19    | $ ExprPrime TermPrime Factor *      | * id $                         | Match '*'
+20    | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+21    | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+22    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+23    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+24    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 6: id * id + id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | id * id + id $                 | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | id * id + id $                 | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | id * id + id $                 | Factor -> id
+4     | $ ExprPrime TermPrime id            | id * id + id $                 | Match 'id'
+5     | $ ExprPrime TermPrime               | * id + id $                    | TermPrime -> * Factor TermPrime
+6     | $ ExprPrime TermPrime Factor *      | * id + id $                    | Match '*'
+7     | $ ExprPrime TermPrime Factor        | id + id $                      | Factor -> id
+8     | $ ExprPrime TermPrime id            | id + id $                      | Match 'id'
+9     | $ ExprPrime TermPrime               | + id $                         | TermPrime -> epsilon
+10    | $ ExprPrime                         | + id $                         | ExprPrime -> + Term ExprPrime
+11    | $ ExprPrime Term +                  | + id $                         | Match '+'
+12    | $ ExprPrime Term                    | id $                           | Term -> Factor TermPrime
+13    | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+14    | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+15    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+16    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+17    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 7: ( id ) ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | ( id ) $                       | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | ( id ) $                       | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | ( id ) $                       | Factor -> ( Expr )
+4     | $ ExprPrime TermPrime ) Expr (      | ( id ) $                       | Match '('
+5     | $ ExprPrime TermPrime ) Expr        | id ) $                         | Expr -> Term ExprPrime
+6     | $ ExprPrime TermPrime ) ExprPrime Term | id ) $                         | Term -> Factor TermPrime
+7     | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id ) $                         | Factor -> id
+8     | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id ) $                         | Match 'id'
+9     | $ ExprPrime TermPrime ) ExprPrime TermPrime | ) $                            | TermPrime -> epsilon
+10    | $ ExprPrime TermPrime ) ExprPrime   | ) $                            | ExprPrime -> epsilon
+11    | $ ExprPrime TermPrime )             | ) $                            | Match ')'
+12    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+13    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+14    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 8: ( id + id + id ) ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | ( id + id + id ) $             | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | ( id + id + id ) $             | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | ( id + id + id ) $             | Factor -> ( Expr )
+4     | $ ExprPrime TermPrime ) Expr (      | ( id + id + id ) $             | Match '('
+5     | $ ExprPrime TermPrime ) Expr        | id + id + id ) $               | Expr -> Term ExprPrime
+6     | $ ExprPrime TermPrime ) ExprPrime Term | id + id + id ) $               | Term -> Factor TermPrime
+7     | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id + id + id ) $               | Factor -> id
+8     | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id + id + id ) $               | Match 'id'
+9     | $ ExprPrime TermPrime ) ExprPrime TermPrime | + id + id ) $                  | TermPrime -> epsilon
+10    | $ ExprPrime TermPrime ) ExprPrime   | + id + id ) $                  | ExprPrime -> + Term ExprPrime
+11    | $ ExprPrime TermPrime ) ExprPrime Term + | + id + id ) $                  | Match '+'
+12    | $ ExprPrime TermPrime ) ExprPrime Term | id + id ) $                    | Term -> Factor TermPrime
+13    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id + id ) $                    | Factor -> id
+14    | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id + id ) $                    | Match 'id'
+15    | $ ExprPrime TermPrime ) ExprPrime TermPrime | + id ) $                       | TermPrime -> epsilon
+16    | $ ExprPrime TermPrime ) ExprPrime   | + id ) $                       | ExprPrime -> + Term ExprPrime
+17    | $ ExprPrime TermPrime ) ExprPrime Term + | + id ) $                       | Match '+'
+18    | $ ExprPrime TermPrime ) ExprPrime Term | id ) $                         | Term -> Factor TermPrime
+19    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id ) $                         | Factor -> id
+20    | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id ) $                         | Match 'id'
+21    | $ ExprPrime TermPrime ) ExprPrime TermPrime | ) $                            | TermPrime -> epsilon
+22    | $ ExprPrime TermPrime ) ExprPrime   | ) $                            | ExprPrime -> epsilon
+23    | $ ExprPrime TermPrime )             | ) $                            | Match ')'
+24    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+25    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+26    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 9: id + id + id ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | id + id + id $                 | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | id + id + id $                 | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | id + id + id $                 | Factor -> id
+4     | $ ExprPrime TermPrime id            | id + id + id $                 | Match 'id'
+5     | $ ExprPrime TermPrime               | + id + id $                    | TermPrime -> epsilon
+6     | $ ExprPrime                         | + id + id $                    | ExprPrime -> + Term ExprPrime
+7     | $ ExprPrime Term +                  | + id + id $                    | Match '+'
+8     | $ ExprPrime Term                    | id + id $                      | Term -> Factor TermPrime
+9     | $ ExprPrime TermPrime Factor        | id + id $                      | Factor -> id
+10    | $ ExprPrime TermPrime id            | id + id $                      | Match 'id'
+11    | $ ExprPrime TermPrime               | + id $                         | TermPrime -> epsilon
+12    | $ ExprPrime                         | + id $                         | ExprPrime -> + Term ExprPrime
+13    | $ ExprPrime Term +                  | + id $                         | Match '+'
+14    | $ ExprPrime Term                    | id $                           | Term -> Factor TermPrime
+15    | $ ExprPrime TermPrime Factor        | id $                           | Factor -> id
+16    | $ ExprPrime TermPrime id            | id $                           | Match 'id'
+17    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+18    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+19    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 10: ( id * id ) + ( id + id ) ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Expr                              | ( id * id ) + ( id + id ) $    | Expr -> Term ExprPrime
+2     | $ ExprPrime Term                    | ( id * id ) + ( id + id ) $    | Term -> Factor TermPrime
+3     | $ ExprPrime TermPrime Factor        | ( id * id ) + ( id + id ) $    | Factor -> ( Expr )
+4     | $ ExprPrime TermPrime ) Expr (      | ( id * id ) + ( id + id ) $    | Match '('
+5     | $ ExprPrime TermPrime ) Expr        | id * id ) + ( id + id ) $      | Expr -> Term ExprPrime
+6     | $ ExprPrime TermPrime ) ExprPrime Term | id * id ) + ( id + id ) $      | Term -> Factor TermPrime
+7     | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id * id ) + ( id + id ) $      | Factor -> id
+8     | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id * id ) + ( id + id ) $      | Match 'id'
+9     | $ ExprPrime TermPrime ) ExprPrime TermPrime | * id ) + ( id + id ) $         | TermPrime -> * Factor TermPrime
+10    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor * | * id ) + ( id + id ) $         | Match '*'
+11    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id ) + ( id + id ) $           | Factor -> id
+12    | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id ) + ( id + id ) $           | Match 'id'
+13    | $ ExprPrime TermPrime ) ExprPrime TermPrime | ) + ( id + id ) $              | TermPrime -> epsilon
+14    | $ ExprPrime TermPrime ) ExprPrime   | ) + ( id + id ) $              | ExprPrime -> epsilon
+15    | $ ExprPrime TermPrime )             | ) + ( id + id ) $              | Match ')'
+16    | $ ExprPrime TermPrime               | + ( id + id ) $                | TermPrime -> epsilon
+17    | $ ExprPrime                         | + ( id + id ) $                | ExprPrime -> + Term ExprPrime
+18    | $ ExprPrime Term +                  | + ( id + id ) $                | Match '+'
+19    | $ ExprPrime Term                    | ( id + id ) $                  | Term -> Factor TermPrime
+20    | $ ExprPrime TermPrime Factor        | ( id + id ) $                  | Factor -> ( Expr )
+21    | $ ExprPrime TermPrime ) Expr (      | ( id + id ) $                  | Match '('
+22    | $ ExprPrime TermPrime ) Expr        | id + id ) $                    | Expr -> Term ExprPrime
+23    | $ ExprPrime TermPrime ) ExprPrime Term | id + id ) $                    | Term -> Factor TermPrime
+24    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id + id ) $                    | Factor -> id
+25    | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id + id ) $                    | Match 'id'
+26    | $ ExprPrime TermPrime ) ExprPrime TermPrime | + id ) $                       | TermPrime -> epsilon
+27    | $ ExprPrime TermPrime ) ExprPrime   | + id ) $                       | ExprPrime -> + Term ExprPrime
+28    | $ ExprPrime TermPrime ) ExprPrime Term + | + id ) $                       | Match '+'
+29    | $ ExprPrime TermPrime ) ExprPrime Term | id ) $                         | Term -> Factor TermPrime
+30    | $ ExprPrime TermPrime ) ExprPrime TermPrime Factor | id ) $                         | Factor -> id
+31    | $ ExprPrime TermPrime ) ExprPrime TermPrime id | id ) $                         | Match 'id'
+32    | $ ExprPrime TermPrime ) ExprPrime TermPrime | ) $                            | TermPrime -> epsilon
+33    | $ ExprPrime TermPrime ) ExprPrime   | ) $                            | ExprPrime -> epsilon
+34    | $ ExprPrime TermPrime )             | ) $                            | Match ')'
+35    | $ ExprPrime TermPrime               | $                              | TermPrime -> epsilon
+36    | $ ExprPrime                         | $                              | ExprPrime -> epsilon
+37    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+

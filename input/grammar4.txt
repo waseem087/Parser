@@ -1,0 +1,5 @@
+# Grammar 4: Indirect Left Recursion
+# Start -> Alpha a | b
+# Alpha -> Alpha c | Start d | epsilon
+Start -> Alpha a | b
+Alpha -> Alpha c | Start d | epsilon

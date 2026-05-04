@@ -1,0 +1,73 @@
+=== Parse Tree for: a ===
+└── Stmt
+    └── a
+
+
+=== Parse Tree for: if b then a ===
+└── Stmt
+    ├── if
+    ├── Cond
+    │   └── b
+    ├── then
+    ├── Stmt
+    │   └── a
+    └── StmtPrime
+        └── epsilon
+
+
+=== Parse Tree for: if b then a else a ===
+└── Stmt
+    ├── if
+    ├── Cond
+    │   └── b
+    ├── then
+    ├── Stmt
+    │   └── a
+    └── StmtPrime
+        ├── else
+        └── Stmt
+            └── a
+
+
+=== Parse Tree for: if b then if b then a else a ===
+└── Stmt
+    ├── if
+    ├── Cond
+    │   └── b
+    ├── then
+    ├── Stmt
+    │   ├── if
+    │   ├── Cond
+    │   │   └── b
+    │   ├── then
+    │   ├── Stmt
+    │   │   └── a
+    │   └── StmtPrime
+    │       ├── else
+    │       └── Stmt
+    │           └── a
+    └── StmtPrime
+        └── epsilon
+
+
+=== Parse Tree for: if b then a else if b then a ===
+└── Stmt
+    ├── if
+    ├── Cond
+    │   └── b
+    ├── then
+    ├── Stmt
+    │   └── a
+    └── StmtPrime
+        ├── else
+        └── Stmt
+            ├── if
+            ├── Cond
+            │   └── b
+            ├── then
+            ├── Stmt
+            │   └── a
+            └── StmtPrime
+                └── epsilon
+
+

@@ -1,0 +1,6 @@
+# Error strings for Grammar 3
+if b
+then a
+if b else a
+if then a
+a b

@@ -1,0 +1,5 @@
+# Grammar 1: Simple Grammar
+# Tests basic LL(1) parsing with epsilon productions
+Start -> First Second
+First -> a | epsilon
+Second -> b

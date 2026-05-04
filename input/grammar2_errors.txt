@@ -1,0 +1,9 @@
+# Error strings for Grammar 2 (Expression Grammar)
+id + * id
+( id + id
+id id
++ id
+id +
+* id
+( )
+id + id )

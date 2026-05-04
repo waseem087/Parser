@@ -1,0 +1,90 @@
+=== Input 1: a ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Stmt                              | a $                            | Stmt -> a
+2     | $ a                                 | a $                            | Match 'a'
+3     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 2: if b then a ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Stmt                              | if b then a $                  | Stmt -> if Cond then Stmt StmtPrime
+2     | $ StmtPrime Stmt then Cond if       | if b then a $                  | Match 'if'
+3     | $ StmtPrime Stmt then Cond          | b then a $                     | Cond -> b
+4     | $ StmtPrime Stmt then b             | b then a $                     | Match 'b'
+5     | $ StmtPrime Stmt then               | then a $                       | Match 'then'
+6     | $ StmtPrime Stmt                    | a $                            | Stmt -> a
+7     | $ StmtPrime a                       | a $                            | Match 'a'
+8     | $ StmtPrime                         | $                              | StmtPrime -> epsilon
+9     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 3: if b then a else a ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Stmt                              | if b then a else a $           | Stmt -> if Cond then Stmt StmtPrime
+2     | $ StmtPrime Stmt then Cond if       | if b then a else a $           | Match 'if'
+3     | $ StmtPrime Stmt then Cond          | b then a else a $              | Cond -> b
+4     | $ StmtPrime Stmt then b             | b then a else a $              | Match 'b'
+5     | $ StmtPrime Stmt then               | then a else a $                | Match 'then'
+6     | $ StmtPrime Stmt                    | a else a $                     | Stmt -> a
+7     | $ StmtPrime a                       | a else a $                     | Match 'a'
+8     | $ StmtPrime                         | else a $                       | StmtPrime -> else Stmt
+9     | $ Stmt else                         | else a $                       | Match 'else'
+10    | $ Stmt                              | a $                            | Stmt -> a
+11    | $ a                                 | a $                            | Match 'a'
+12    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 4: if b then if b then a else a ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Stmt                              | if b then if b then a else a $ | Stmt -> if Cond then Stmt StmtPrime
+2     | $ StmtPrime Stmt then Cond if       | if b then if b then a else a $ | Match 'if'
+3     | $ StmtPrime Stmt then Cond          | b then if b then a else a $    | Cond -> b
+4     | $ StmtPrime Stmt then b             | b then if b then a else a $    | Match 'b'
+5     | $ StmtPrime Stmt then               | then if b then a else a $      | Match 'then'
+6     | $ StmtPrime Stmt                    | if b then a else a $           | Stmt -> if Cond then Stmt StmtPrime
+7     | $ StmtPrime StmtPrime Stmt then Cond if | if b then a else a $           | Match 'if'
+8     | $ StmtPrime StmtPrime Stmt then Cond | b then a else a $              | Cond -> b
+9     | $ StmtPrime StmtPrime Stmt then b   | b then a else a $              | Match 'b'
+10    | $ StmtPrime StmtPrime Stmt then     | then a else a $                | Match 'then'
+11    | $ StmtPrime StmtPrime Stmt          | a else a $                     | Stmt -> a
+12    | $ StmtPrime StmtPrime a             | a else a $                     | Match 'a'
+13    | $ StmtPrime StmtPrime               | else a $                       | StmtPrime -> else Stmt
+14    | $ StmtPrime Stmt else               | else a $                       | Match 'else'
+15    | $ StmtPrime Stmt                    | a $                            | Stmt -> a
+16    | $ StmtPrime a                       | a $                            | Match 'a'
+17    | $ StmtPrime                         | $                              | StmtPrime -> epsilon
+18    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 5: if b then a else if b then a ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Stmt                              | if b then a else if b then a $ | Stmt -> if Cond then Stmt StmtPrime
+2     | $ StmtPrime Stmt then Cond if       | if b then a else if b then a $ | Match 'if'
+3     | $ StmtPrime Stmt then Cond          | b then a else if b then a $    | Cond -> b
+4     | $ StmtPrime Stmt then b             | b then a else if b then a $    | Match 'b'
+5     | $ StmtPrime Stmt then               | then a else if b then a $      | Match 'then'
+6     | $ StmtPrime Stmt                    | a else if b then a $           | Stmt -> a
+7     | $ StmtPrime a                       | a else if b then a $           | Match 'a'
+8     | $ StmtPrime                         | else if b then a $             | StmtPrime -> else Stmt
+9     | $ Stmt else                         | else if b then a $             | Match 'else'
+10    | $ Stmt                              | if b then a $                  | Stmt -> if Cond then Stmt StmtPrime
+11    | $ StmtPrime Stmt then Cond if       | if b then a $                  | Match 'if'
+12    | $ StmtPrime Stmt then Cond          | b then a $                     | Cond -> b
+13    | $ StmtPrime Stmt then b             | b then a $                     | Match 'b'
+14    | $ StmtPrime Stmt then               | then a $                       | Match 'then'
+15    | $ StmtPrime Stmt                    | a $                            | Stmt -> a
+16    | $ StmtPrime a                       | a $                            | Match 'a'
+17    | $ StmtPrime                         | $                              | StmtPrime -> epsilon
+18    | $                                   | $                              | ACCEPT
+ACCEPTED
+
+

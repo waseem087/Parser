@@ -1,0 +1,24 @@
+=== Transformed Grammar ===
+Stmt -> if Cond then Stmt StmtPrime | a
+Cond -> b
+StmtPrime -> else Stmt | epsilon
+
+=== FIRST Sets ===
+FIRST(Stmt           ) = { if, a }
+FIRST(Cond           ) = { b }
+FIRST(StmtPrime      ) = { else, epsilon }
+
+=== FOLLOW Sets ===
+FOLLOW(Stmt          ) = { $, else }
+FOLLOW(Cond          ) = { then }
+FOLLOW(StmtPrime     ) = { $, else }
+
+=== LL(1) Parsing Table ===
+NT                   | $                    | a                    | b                    | else                 | if                   | then                
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Stmt                 |                      | Stmt->a              |                      |                      | Stmt->if Cond then … |                     
+Cond                 |                      |                      | Cond->b              |                      |                      |                     
+StmtPrime            | StmtPrime->epsilon   |                      |                      | StmtPrime->else Stmt |                      |                     
+
+Grammar is NOT LL(1)
+  CONFLICT at M[StmtPrime, else]: StmtPrime -> else Stmt  AND  StmtPrime -> epsilon

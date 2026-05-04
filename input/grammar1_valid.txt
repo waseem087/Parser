@@ -1,0 +1,4 @@
+# Valid strings for Grammar 1: Start -> First Second
+# First -> a | epsilon,  Second -> b
+a b
+b

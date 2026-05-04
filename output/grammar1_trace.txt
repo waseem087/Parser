@@ -1,0 +1,23 @@
+=== Input 1: a b ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Start                             | a b $                          | Start -> First Second
+2     | $ Second First                      | a b $                          | First -> a
+3     | $ Second a                          | a b $                          | Match 'a'
+4     | $ Second                            | b $                            | Second -> b
+5     | $ b                                 | b $                            | Match 'b'
+6     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+
+=== Input 2: b ===
+Step  | Stack                               | Input                          | Action
+------------------------------------------------------------------------------------------------------------------------
+1     | $ Start                             | b $                            | Start -> First Second
+2     | $ Second First                      | b $                            | First -> epsilon
+3     | $ Second                            | b $                            | Second -> b
+4     | $ b                                 | b $                            | Match 'b'
+5     | $                                   | $                              | ACCEPT
+ACCEPTED
+
+

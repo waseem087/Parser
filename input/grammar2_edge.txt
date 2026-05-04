@@ -1,0 +1,6 @@
+# Edge cases for Grammar 2
+id
+( id )
+( ( id ) )
+id * id * id
+id + id + id + id

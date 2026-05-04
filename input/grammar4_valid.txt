@@ -1,0 +1,3 @@
+# Valid strings for Grammar 4 (Indirect Left Recursion)
+b
+a

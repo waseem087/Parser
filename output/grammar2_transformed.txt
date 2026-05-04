@@ -1,0 +1,31 @@
+=== Transformed Grammar ===
+Expr -> Term ExprPrime
+Term -> Factor TermPrime
+Factor -> ( Expr ) | id
+ExprPrime -> + Term ExprPrime | epsilon
+TermPrime -> * Factor TermPrime | epsilon
+
+=== FIRST Sets ===
+FIRST(Expr           ) = { (, id }
+FIRST(Term           ) = { (, id }
+FIRST(Factor         ) = { (, id }
+FIRST(ExprPrime      ) = { +, epsilon }
+FIRST(TermPrime      ) = { *, epsilon }
+
+=== FOLLOW Sets ===
+FOLLOW(Expr          ) = { $, ) }
+FOLLOW(Term          ) = { +, $, ) }
+FOLLOW(Factor        ) = { *, +, $, ) }
+FOLLOW(ExprPrime     ) = { $, ) }
+FOLLOW(TermPrime     ) = { +, $, ) }
+
+=== LL(1) Parsing Table ===
+NT                   | $                    | (                    | )                    | *                    | +                    | id                  
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Expr                 |                      | Expr->Term ExprPrime |                      |                      |                      | Expr->Term ExprPrime
+Term                 |                      | Term->Factor TermPr… |                      |                      |                      | Term->Factor TermPr…
+Factor               |                      | Factor->( Expr )     |                      |                      |                      | Factor->id          
+ExprPrime            | ExprPrime->epsilon   |                      | ExprPrime->epsilon   |                      | ExprPrime->+ Term E… |                     
+TermPrime            | TermPrime->epsilon   |                      | TermPrime->epsilon   | TermPrime->* Factor… | TermPrime->epsilon   |                     
+
+Grammar is LL(1)

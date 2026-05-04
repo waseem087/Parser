@@ -1,0 +1,23 @@
+=== Transformed Grammar ===
+Start -> First Second
+First -> a | epsilon
+Second -> b
+
+=== FIRST Sets ===
+FIRST(Start          ) = { a, b }
+FIRST(First          ) = { a, epsilon }
+FIRST(Second         ) = { b }
+
+=== FOLLOW Sets ===
+FOLLOW(Start         ) = { $ }
+FOLLOW(First         ) = { b }
+FOLLOW(Second        ) = { $ }
+
+=== LL(1) Parsing Table ===
+NT                   | $                    | a                    | b                   
+-----------------------------------------------------------------------------------------
+Start                |                      | Start->First Second  | Start->First Second 
+First                |                      | First->a             | First->epsilon      
+Second               |                      |                      | Second->b           
+
+Grammar is LL(1)

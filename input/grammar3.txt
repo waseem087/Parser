@@ -1,0 +1,3 @@
+# Grammar 3: Statement Grammar (if-then-else, requires left factoring)
+Stmt -> if Cond then Stmt else Stmt | if Cond then Stmt | a
+Cond -> b
