@@ -182,6 +182,13 @@ Factor -> ( Expr ) | id
 Stmt -> if Cond then Stmt else Stmt | if Cond then Stmt | a
 Cond -> b
 ```
+
+<img width="1650" height="271" alt="image" src="https://github.com/user-attachments/assets/df2ea66e-7e3b-4b89-ba22-eaa19627f5de" />
+
+Grammar 3 is not LL(1) because of a conflict in the parsing table at M[StmtPrime, else]. Both productions
+StmtPrime → else Stmt and StmtPrime → ε are applicable for the same lookahead (else).
+
+
 - Has common prefix `if Cond then Stmt` → left factoring applied
 - Valid: `if b then a`, `if b then a else a`
 <img width="581" height="59" alt="image" src="https://github.com/user-attachments/assets/d5f082e8-4259-464c-b628-4bd1011a3282" />
