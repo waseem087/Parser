@@ -152,7 +152,10 @@ Second -> b
 - Valid: `a b`, `b`
 <img width="1137" height="429" alt="image" src="https://github.com/user-attachments/assets/5a10fafe-fe21-4ff2-9c1a-b0722411a116" />
 
-### Grammar 2 — Expression Grammar (Left Recursion)
+### Grammar 2 — Expression Grammar (Left Recursion).
+
+<img width="491" height="90" alt="image" src="https://github.com/user-attachments/assets/93be0a3c-a952-45d0-8581-0e3ed562e7bd" />
+
 ```
 Expr -> Expr + Term | Term
 Term -> Term * Factor | Factor
