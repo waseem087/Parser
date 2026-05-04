@@ -166,10 +166,9 @@ Factor -> ( Expr ) | id
 - Valid: `id + id * id`, `( id + id ) * id`
 
 ### Grammar 3 — Statement Grammar (Left Factoring)
+<img width="1005" height="188" alt="image" src="https://github.com/user-attachments/assets/26458f57-7917-42b6-8d1a-9570571ba42e" />
 
 ```
-<img width="1005" height="188" alt="image" src="https://github.com/user-attachments/assets/edaa72e6-3ab4-4420-a011-9e46311f7608" />
-
 Stmt -> if Cond then Stmt else Stmt | if Cond then Stmt | a
 Cond -> b
 ```
