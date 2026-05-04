@@ -184,6 +184,8 @@ Cond -> b
 ```
 - Has common prefix `if Cond then Stmt` → left factoring applied
 - Valid: `if b then a`, `if b then a else a`
+<img width="581" height="59" alt="image" src="https://github.com/user-attachments/assets/d5f082e8-4259-464c-b628-4bd1011a3282" />
+
 <img width="521" height="458" alt="image" src="https://github.com/user-attachments/assets/31bdc50c-9bff-4b87-99e3-d9d11059bb8c" />
 
 ### Grammar 4 — Indirect Left Recursion
