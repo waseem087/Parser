@@ -189,6 +189,8 @@ Cond -> b
 <img width="521" height="458" alt="image" src="https://github.com/user-attachments/assets/31bdc50c-9bff-4b87-99e3-d9d11059bb8c" />
 
 ### Grammar 4 — Indirect Left Recursion
+<img width="477" height="85" alt="image" src="https://github.com/user-attachments/assets/e35b1028-5436-4667-96a1-4a75e0567193" />
+
 ```
 Start -> Alpha a | b
 Alpha -> Alpha c | Start d | epsilon
