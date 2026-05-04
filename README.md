@@ -172,6 +172,8 @@ Factor -> ( Expr ) | id
   ```
 - Valid: `id + id * id`, `( id + id ) * id`
 <img width="421" height="64" alt="image" src="https://github.com/user-attachments/assets/23fbdf46-b5fe-4ead-853b-9f67fe0e639b" />
+<img width="418" height="554" alt="image" src="https://github.com/user-attachments/assets/9a99ea6d-e46a-4b5f-9b4f-68e056300012" />
+
 
 ### Grammar 3 — Statement Grammar (Left Factoring)
 <img width="1005" height="188" alt="image" src="https://github.com/user-attachments/assets/26458f57-7917-42b6-8d1a-9570571ba42e" />
